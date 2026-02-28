@@ -1,1 +1,19 @@
+Generate Twitter thread exactly in this format. Return plain text only.
+
+twitter_thread must follow this structure:
+Tweet 1: <Curiosity Hook>
+Tweet 2: <Business Pain>
+Tweet 3: <Technical Approach>
+Tweet 4: <Skill Growth>
+Tweet 5: <Recruiter facing outcome & CTA>
+
+Rules:
+- Each line must start with "Tweet X:"
+- No emojis
+- No hashtags
+- No extra commentary
+- No paragraph text
+- Only 5 tweets
+- Each under 250 characters
+
 
