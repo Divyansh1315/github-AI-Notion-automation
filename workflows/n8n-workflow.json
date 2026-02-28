@@ -1,1 +1,220 @@
-
+{
+  "name": "GitHub Content Engine - Public Version",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate-content",
+        "responseMode": "responseNode"
+      },
+      "id": "webhook-node",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-800, -80]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "repo",
+              "stringValue": "={{$json.body.repo}}"
+            }
+          ]
+        }
+      },
+      "id": "set-repo",
+      "name": "Set Repo Name",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [-600, -80]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/{{$json.repo}}/readme",
+        "authentication": "none",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "github-api",
+      "name": "GitHub README API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [-350, -80],
+      "retryOnFail": true,
+      "maxTries": 3
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            {
+              "leftValue": "={{ $json.body.content }}",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ]
+        }
+      },
+      "id": "check-readme",
+      "name": "README Exists?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [-100, -80]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const content = $json.body?.content;\n\nif (!content) {\n  return { json: { error: 'No README found', repo_name: $json.repo } };\n}\n\nconst decoded = Buffer.from(content, 'base64').toString('utf-8');\n\nconst cleaned = decoded\n  .replace(/<[^>]*>/g, '')\n  .replace(/\\n+/g, ' ')\n  .trim();\n\nreturn {\n  json: {\n    repo_name: $json.repo,\n    readme_text: cleaned\n  }\n};"
+      },
+      "id": "decode-readme",
+      "name": "Decode README",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [100, -176]
+    },
+    {
+      "parameters": {
+        "modelId": "gpt-4.1-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a senior data storytelling expert and technical recruiter. Analyze the GitHub project and generate structured personal branding content. Return only valid JSON."
+          },
+          {
+            "role": "user",
+            "content": "Repository Name: {{ $json.repo_name }}\n\nREADME:\n{{ $json.readme_text }}\n\nReturn structured JSON."
+          }
+        ],
+        "options": {
+          "maxTokens": 1500,
+          "textFormat": {
+            "textOptions": {
+              "type": "json_schema",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "repo_name": { "type": "string" },
+                  "hook_line": { "type": "string" },
+                  "linkedin_post": { "type": "string" },
+                  "twitter_thread": { "type": "string" },
+                  "hashtags": { "type": "string" },
+                  "resume_bullet": { "type": "string" },
+                  "portfolio_description": { "type": "string" }
+                },
+                "required": [
+                  "repo_name",
+                  "hook_line",
+                  "linkedin_post",
+                  "twitter_thread",
+                  "hashtags",
+                  "resume_bullet",
+                  "portfolio_description"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "id": "generate-content",
+      "name": "Generate Content",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2,
+      "position": [350, -176]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": "YOUR_NOTION_DATABASE_ID",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Repo|title",
+              "title": "={{$json.repo_name}}"
+            },
+            {
+              "key": "Hook Line|rich_text",
+              "textContent": "={{$json.hook_line}}"
+            },
+            {
+              "key": "LinkedIn Post|rich_text",
+              "textContent": "={{$json.linkedin_post}}"
+            },
+            {
+              "key": "Twitter Thread|rich_text",
+              "textContent": "={{$json.twitter_thread}}"
+            },
+            {
+              "key": "Hashtags|rich_text",
+              "textContent": "={{$json.hashtags}}"
+            },
+            {
+              "key": "Resume Bullet|rich_text",
+              "textContent": "={{$json.resume_bullet}}"
+            },
+            {
+              "key": "Portfolio Description|rich_text",
+              "textContent": "={{$json.portfolio_description}}"
+            }
+          ]
+        }
+      },
+      "id": "notion-db",
+      "name": "Notion Posts Database",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [600, -176]
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems"
+      },
+      "id": "respond-webhook",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [900, -80]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{ "node": "Set Repo Name", "type": "main", "index": 0 }]]
+    },
+    "Set Repo Name": {
+      "main": [[{ "node": "GitHub README API", "type": "main", "index": 0 }]]
+    },
+    "GitHub README API": {
+      "main": [[{ "node": "README Exists?", "type": "main", "index": 0 }]]
+    },
+    "README Exists?": {
+      "main": [
+        [{ "node": "Decode README", "type": "main", "index": 0 }],
+        [{ "node": "Respond to Webhook", "type": "main", "index": 0 }]
+      ]
+    },
+    "Decode README": {
+      "main": [[{ "node": "Generate Content", "type": "main", "index": 0 }]]
+    },
+    "Generate Content": {
+      "main": [[{ "node": "Notion Posts Database", "type": "main", "index": 0 }]]
+    },
+    "Notion Posts Database": {
+      "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
