@@ -1,0 +1,3 @@
+HOOK (1 line)
+Write a sharp, insight-driven hook that highlights business value or decision impact, not just the project topic.
+Tone: Senior, confident, outcome-focused.
