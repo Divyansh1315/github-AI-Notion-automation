@@ -1,9 +1,42 @@
-{
-  "repo_name": "github-content-engine",
-  "hook_line": "Technical execution only matters when it translates into business credibility.",
-  "linkedin_post": "Most developers build projects. Few position them strategically.\n\nThis project addresses a common gap: technical work often lacks business framing. Instead of merely documenting features, I designed an automation pipeline that converts raw GitHub READMEs into recruiter-ready narratives.\n\nThe system ingests documentation, cleans unstructured text, and applies schema-enforced AI generation to produce structured content across LinkedIn, Twitter, resumes, and portfolio summaries.\n\nRather than listing tools, the approach emphasizes problem framing, decision impact, and analytical thinking.\n\nBy integrating API orchestration, data transformation, and structured prompt engineering, I created a repeatable positioning engine.\n\nThe result is not just automation — it’s a scalable method to convert technical work into professional capital.\n\nHow do you currently communicate the business value behind your projects?",
-  "twitter_thread": "- Tweet 1: Most GitHub projects don’t fail technically — they fail narratively.\n- Tweet 2: Recruiters care about decision impact, not tool lists.\n- Tweet 3: I built an AI pipeline that transforms raw READMEs into business-focused content.\n- Tweet 4: The system enforces structured storytelling and professional positioning.\n- Tweet 5: Technical work deserves strategic framing. That’s what this engine delivers.",
-  "hashtags": "#DataAnalytics #PersonalBranding #AIEngineering #SystemDesign #CareerStrategy\n#AnalyticsCommunity #BuildInPublic #OpenSource #DataEngineering #TechCareers",
-  "resume_bullet": "Designed and automated a schema-enforced AI content pipeline that converts technical GitHub documentation into recruiter-ready narratives, reducing manual positioning effort by 80% through API orchestration and structured prompt engineering.",
-  "portfolio_description": "An AI-powered content transformation engine that converts GitHub documentation into structured, recruiter-ready personal branding assets using API orchestration, data cleaning, and schema-controlled generation."
-}
+[
+  {
+    "output": [
+      {
+        "id": "--",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": {
+              "HOOK": "Transforming raw code repositories into strategic personal branding assets drives visibility and career growth without extra manual effort.",
+              "LINKEDIN_POST": "In today’s fast-paced tech landscape, turning project work into clear professional value is a persistent challenge. Manual documentation drains time and often lacks consistency, hindering personal brand development. To address this, I designed an end-to-end automation system that extracts key repository data and synthesizes it into tailored LinkedIn posts, Twitter threads, resume bullets, and portfolio descriptions. This workflow integrates real-time GitHub data extraction, advanced content structuring, and AI-driven narrative generation, pushing beyond basic automation to deliver meaningful storytelling. Notion serves as a central hub for managing this content pipeline, enabling scalable reuse and continuous brand building. The strategic value lies in reducing repetitive tasks while maintaining clear, decision-focused communication of technical accomplishments. This approach sharpened my problem-framing skills around automating content generation with user-centric outcomes. It ultimately empowers professionals to maintain a consistent, high-quality online presence that supports career advancement. I’m keen to hear how others tackle personal branding automation and its impact on their professional visibility.",
+              "twitter_thread": "Tweet 1: How can we automatically turn GitHub projects into professional content without manual effort?\nTweet 2: Manually documenting technical projects wastes valuable time and limits consistent brand messaging.\nTweet 3: I built a pipeline integrating GitHub APIs, AI for content generation, and Notion for structured publishing.\nTweet 4: This project expanded my skills in automating content workflows and aligning tech narratives with career goals.\nTweet 5: Now recruiters and hiring managers get clearer insights into projects through ready-to-publish content. Thoughts on automation in personal branding?",
+              "HASHTAGS": {
+                "linkedin": [
+                  "#PersonalBrandingStrategy",
+                  "#ContentAutomation",
+                  "#CareerGrowth",
+                  "#ProfessionalNarrative",
+                  "#TechLeadership"
+                ],
+                "twitter": [
+                  "#DataScience",
+                  "#TechAutomation",
+                  "#ContentStrategy",
+                  "#DeveloperExperience",
+                  "#GitHubProjects"
+                ]
+              },
+              "RESUME_BULLET": "Developed an automated content generation pipeline integrating GitHub and AI technologies, reducing manual documentation effort by 70% and enhancing personal branding consistency using Notion and JavaScript.",
+              "PORTFOLIO_DESCRIPTION": "Created a scalable automation framework converting GitHub repositories into multi-channel professional content, streamlining documentation and amplifying personal brand visibility through AI-driven narrative generation and Notion integration."
+            }
+          }
+        ],
+        "role": "assistant"
+      }
+    ]
+  }
+]
