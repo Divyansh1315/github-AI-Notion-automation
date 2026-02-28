@@ -111,13 +111,6 @@ Body: Raw JSON
 
 ---
 
-## Using cURL
-
-curl -X POST http://localhost:5678/webhook/generate-content \
-  -H "Content-Type: application/json" \
-  -d '{"repo":"username/repository-name"}'
-
----
 
 # 8. Security Considerations
 
