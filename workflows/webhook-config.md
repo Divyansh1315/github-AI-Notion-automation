@@ -52,7 +52,7 @@ If validation fails, the workflow exits early without triggering AI.
 # 4. Success Response Structure
 
 On successful execution:
-
+<pre>
 {
   "Status": "success",
   "repo": "username/repository-name",
@@ -67,20 +67,20 @@ On successful execution:
   },
   "timestamp": "ISO Date"
 }
-
+</pre>
 ---
 
 # 5. Failure Response Structure
 
 If README is missing or repository is invalid:
-
+<pre>
 {
   "Status": "Failed",
   "Reason": "README not found or repository invalid",
   "repo": "username/repository-name",
   "timestamp": "ISO Date"
 }
-
+</pre>
 ---
 
 # 6. Execution Flow
@@ -122,15 +122,14 @@ curl -X POST http://localhost:5678/webhook/generate-content \
 # 8. Security Considerations
 
 In production, implement:
+- Webhook authentication token
+- Rate limiting
+- IP whitelisting
+- HTTPS only
+- Input sanitization
+- GitHub API authentication to prevent rate limits
 
-• Webhook authentication token
-• Rate limiting
-• IP whitelisting
-• HTTPS only
-• Input sanitization
-• GitHub API authentication to prevent rate limits
-
-Recommended pattern:
+Recommended pattern ->
 
 Add header validation:
 
@@ -158,24 +157,22 @@ AI cost protection:
 # 10. Idempotency Strategy
 
 To avoid duplicate content creation:
-
-• Check if repo already exists in Notion
-• Skip regeneration if Status = Published
-• Add execution logging
+- Check if repo already exists in Notion
+- Skip regeneration if Status = Published
+- Add execution logging
 
 ---
 
 # 11. Integration Options
 
 The webhook can be triggered by:
-
-• GitHub Actions
-• Custom frontend dashboard
-• Backend microservice
-• CLI tool
-• Zapier/Make
-• Postman
-• Internal automation platform
+- GitHub Actions
+- Custom frontend dashboard
+- Backend microservice
+- CLI tool
+- Zapier/Make
+- Postman
+- Internal automation platform
 
 ---
 
@@ -191,13 +188,12 @@ Posts published on LinkedIn & Twitter
 ---
 
 # 13. Production Hardening (Future Enhancements)
-
-• Request signature verification
-• Queue-based execution
-• Async processing
-• Multi-tenant support
-• Audit logs
-• Usage tracking
+- Request signature verification
+- Queue-based execution
+- Async processing
+- Multi-tenant support
+- Audit logs
+- Usage tracking
 
 It transforms technical documentation into professional branding assets using a secure and scalable workflow.
 
