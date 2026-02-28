@@ -108,3 +108,61 @@ HTTP Request configuration:
 Authorization: `Bearer <GitHub Token>`
 
 Accept: `application/vnd.github+json`
+
+### 3) IF Node
+
+Condition: `data exists`
+
+**Prevents:**
+- broken runs
+- empty READMEs
+
+### 4) README Content Node
+
+Fetch full content from:
+`{{$json.download_url}}`
+
+Method: `GET`
+
+### 5) Decode README Code Node
+
+Use JavaScript to clean text:
+
+<pre>
+  let readme = $json.data;
+
+if (!readme) return [];
+
+try {
+  readme = Buffer.from(readme, 'base64').toString('utf8');
+} catch (e) {}
+
+const cleaned = readme
+  .replace(/<[^>]*>/g, '')
+  .replace(/\n+/g, ' ')
+  .trim();
+
+return [
+  {
+    json: {
+      repo_name: $node["Webhook"].json.repo,
+      readme_text: cleaned
+    }
+  }
+];
+</pre>
+
+
+### 6) AI Processing Node
+
+Prompt should extract:
+- Hook
+- Problem
+- Approach
+- Learnings
+- Outcomes
+- LinkedIn content
+- Portfolio summary
+- Resume bullet points
+
+Expected structured output:
