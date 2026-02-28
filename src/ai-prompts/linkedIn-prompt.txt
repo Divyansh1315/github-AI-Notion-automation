@@ -1,1 +1,16 @@
+Write in a polished, leadership-level tone suitable for experienced professionals.
 
+Strict format structure:
+- Opening hook statement
+- Real-world business problem being solved
+- Strategic approach taken (thinking + methodology)
+- Tools used (naturally integrated, not listed)
+- Key learning or professional growth insight
+- Business outcome / decision impact
+- Closing line inviting engagement or discussion
+
+Style Guidelines:
+- Sound like a professional sharing lessons, not a student explaining a project
+- Emphasize decision-making, problem framing, and analytical thinking
+- Avoid generic phrases like “This project helped me learn”
+- Write in a natural human tone
