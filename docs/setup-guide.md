@@ -166,3 +166,88 @@ Prompt should extract:
 - Resume bullet points
 
 Expected structured output:
+
+<pre>
+  {
+  "hook_line": "",
+  "linkedin_post": "",
+  "twitter_thread": "",
+  "hashtags": "",
+  "resume_bullet": "",
+  "portfolio_description": "",
+  "date_time": ""
+}
+</pre>
+
+### 7) Output Formatter
+
+Standardize fields:
+- clean formatting
+- schema validation
+- remove unwanted text
+
+### 8) Notion Node
+
+Map fields:
+| Notion Column         | AI Field                        |
+| --------------------- | ------------------------------- |
+| LinkedIn Post         | {{$json.linkedin_post}}         |
+| Twitter Thread        | {{$json.twitter_thread}}        |
+| Resume Bullet         | {{$json.resume_bullet}}         |
+| Portfolio Description | {{$json.portfolio_description}} |
+| Repo                  | {{$json.repo_name}}             |
+| Status                | Draft                           |
+
+## Testing the Workflow
+
+### Manual Test
+Send request via Postman: `POST /webhook`
+Body:
+`{
+  "repo": "Atliq-Hardware-Business-Analysis"
+}
+`
+
+### Expected result:
+- README fetched
+- AI output generated
+- Entry created in Notion
+
+## Common Errors & Fixes
+
+### Issue: README not fetched
+Fix:
+- verify repo name
+- check GitHub token
+
+### Issue: Base64 decode fails
+Fix:
+- ensure encoding exists
+- fallback handling
+
+### Issue: Notion entry fails
+Fix:
+- check database access
+- verify field mapping
+
+### Issue: AI output inconsistent
+Fix:
+- enforce structured prompt
+- validate JSON output
+
+## Security Best Practices
+- Never expose API keys
+- Use environment variables
+- Limit GitHub token permissions
+- Restrict Notion integration access
+
+## Final Outcome
+
+Once setup is complete, you will have a system that:
+- reads GitHub projects
+- converts them into insights
+- creates professional content
+- builds your portfolio automatically
+- saves everything into Notion
+
+This becomes your personal AI-powered documentation and personal branding engine.
