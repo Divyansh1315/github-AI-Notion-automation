@@ -1,5 +1,8 @@
 # GitHub → AI → Notion Automation for Content & Personal Branding
 
+<img width="1575" height="473" alt="image" src="https://github.com/user-attachments/assets/55ad3f39-7482-41e9-9359-83d0dbf391bf" />
+
+
 This project is an end-to-end automation workflow that converts GitHub repositories into structured, reusable content for LinkedIn, Twitter/X, portfolio pages, and resume updates — automatically.
 
 It eliminates manual effort in documenting projects and helps transform technical work into professional visibility assets.
@@ -23,20 +26,22 @@ Develop a scalable automation system that:
 Step-by-step Flow
 
 1. Webhook Trigger
-   
+
+    <img width="1360" height="577" alt="image" src="https://github.com/user-attachments/assets/0fed79cd-f7dc-48f2-8734-854c83cb4ab8" />
+
    - Accepts repository name as input
    - Enables automation from phone, browser, or external tools
 
-2. GitHub README API Call
+3. GitHub README API Call
    
    - Fetches repository README content dynamically
 
-3. README Processing
+4. README Processing
    
    - Cleans and structures content
    - Removes noise and formatting artifacts
 
-4. AI Content Generation
+5. AI Content Generation
    
    - Converts project into:
      - LinkedIn post
@@ -45,8 +50,10 @@ Step-by-step Flow
      - Portfolio description
      - Hook lines and insights
 
-5. Notion Integration
-   
+6. Notion Integration
+
+   <img width="1866" height="323" alt="image" src="https://github.com/user-attachments/assets/8b17caf2-31e9-4e3a-9aa3-bc28b2f93c62" />
+
    - Stores outputs into structured database
    - Creates a content pipeline for publishing and reuse
 
