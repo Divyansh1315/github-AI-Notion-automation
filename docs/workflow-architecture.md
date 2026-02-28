@@ -112,6 +112,15 @@ Convert README into AI-ready text.
 }
 </pre>
 
+### 7) Output Structuring Layer
+
+**Purpose:** 
+- Standardize AI response.
+- Enforce schema
+- Normalize field names
+- Remove hallucinated fields
+- Prepare Notion-compatible format
+
 ### 8) Notion Integration
 
 **Purpose:** Store results in knowledge base.
