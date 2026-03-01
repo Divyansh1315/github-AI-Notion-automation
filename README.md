@@ -3,7 +3,7 @@
 <img width="1575" height="473" alt="image" src="https://github.com/user-attachments/assets/55ad3f39-7482-41e9-9359-83d0dbf391bf" />
 
 
-This project is an end-to-end automation workflow that converts GitHub repositories into structured, reusable content for LinkedIn, Twitter/X, portfolio pages, and resume updates — automatically.
+This project is an end-to-end automation workflow that converts GitHub repositories into structured, reusable content for LinkedIn, Twitter/X, portfolio pages, and resume updates automatically.
 
 It eliminates manual effort in documenting projects and helps transform technical work into professional visibility assets.
 
